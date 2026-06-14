@@ -19,7 +19,7 @@ services:
       CLIENT_HOST: 192.168.0.185   # IP терміналу в WiFi мережі (рекомендується статичний IP)
       CLIENT_PORT: "3000"
       TERMINAL_PAYMENT_TIMEOUT_MS: "60000"
-      TERMINAL_CONNECTION_TIMEOUT_MS: "5000"
+      TERMINAL_CONNECTION_TIMEOUT_MS: "15000"
       TERMINAL_RECONNECT_INTERVAL_MS: "30000"
 
       # ── Фіскалізація ─────────────────────────────────────────────────────────
