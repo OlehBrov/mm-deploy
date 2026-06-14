@@ -49,6 +49,9 @@ services:
   frontend:
     build:
       context: ../mm-front-ts
+      args:
+        VITE_STORE_LOGIN: "998877"
+        VITE_STORE_PASSWORD: "mm_nextretail"
     ports:
       - "80:80"           # кіоск-браузер відкриває http://localhost
     depends_on:
