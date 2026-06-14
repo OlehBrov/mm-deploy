@@ -2,7 +2,7 @@ services:
 
   backend:
     build:
-      context: ./mm-back-nest
+      context: ../mm-back-nest
     ports:
       - "6006:6006"       # HTTP + WebSocket — доступно з LAN для адмін-панелі / Postman
     environment:
@@ -39,7 +39,7 @@ services:
       STORE_AUTH_ID: "998877"
 
     volumes:
-      - mm-images:/app/images   # зображення товарів зберігаються між перезапусками
+      - C:/git/mm-images:/app/images   # bind mount — картинки зберігаються на диску хоста
 
     extra_hosts:
       - "host.docker.internal:host-gateway"   # доступ до MS SQL на хості (потрібно на Linux; на Windows Docker Desktop вбудовано)
@@ -48,12 +48,10 @@ services:
 
   frontend:
     build:
-      context: ./mmFront/mm-front-ts
+      context: ../mm-front-ts
     ports:
       - "80:80"           # кіоск-браузер відкриває http://localhost
     depends_on:
       - backend
     restart: unless-stopped
 
-volumes:
-  mm-images:
