@@ -1,0 +1,59 @@
+services:
+
+  backend:
+    build:
+      context: ./mm-back-nest
+    ports:
+      - "6006:6006"       # HTTP + WebSocket — доступно з LAN для адмін-панелі / Postman
+    environment:
+      # ── База даних ────────────────────────────────────────────────────────────
+      # integratedSecurity НЕ працює з Docker → потрібна SQL Server аутентифікація
+      DATABASE_URL: "sqlserver://host.docker.internal:1433;database=original;user=mm_user;password=mmNextRetail_TS-2026;trustServerCertificate=true"
+
+      # ── JWT ───────────────────────────────────────────────────────────────────
+      AUTH_TOKEN_SECRET_KEY: "uH6TO6sqzIewxb71xs8"
+      REFRESH_TOKEN_SECRET_KEY: "W}mUE6{(]R+n+gLw(KwW"
+
+      # ── Термінал ─────────────────────────────────────────────────────────────
+      TERMINAL_PROVIDER: monobank
+      CLIENT_HOST: host.docker.internal   # якщо термінал підключений до моноблока
+      CLIENT_PORT: "3000"
+      TERMINAL_PAYMENT_TIMEOUT_MS: "60000"
+      TERMINAL_CONNECTION_TIMEOUT_MS: "5000"
+      TERMINAL_RECONNECT_INTERVAL_MS: "30000"
+
+      # ── Фіскалізація ─────────────────────────────────────────────────────────
+      FISCAL_HOST: "https://kasa.vchasno.ua"
+      AUTH_MERCH_TOKEN: "q8FYOPDaDMDiSD8_S5kElkut54Wl2P7SL4SZ9RP_Ibs2Fai6GhRmDgBeg_ICgIAv"
+      AUTH_MERCH_TOKEN_VAT: "5dq5ej0FzBUdJc5_bxAviizD8TfNGlji_dwWxDWb6vr9pDKGeCHUB3Su_rOdonDH"
+      FISCAL_RETRY_INTERVAL_MS: "10000"
+
+      # ── Зображення ───────────────────────────────────────────────────────────
+      IMAGE_DIR: /app/images
+      CATEGORY_IMAGE_DIR: /app/images/cat-images
+
+      # ── Магазин ──────────────────────────────────────────────────────────────
+      PORT: "6006"
+      MM_HOST: "http://backend:6006"
+      STORE_ID: "11"
+      STORE_AUTH_ID: "998877"
+
+    volumes:
+      - mm-images:/app/images   # зображення товарів зберігаються між перезапусками
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # доступ до MS SQL на хості (потрібно на Linux; на Windows Docker Desktop вбудовано)
+
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./mmFront/mm-front-ts
+    ports:
+      - "80:80"           # кіоск-браузер відкриває http://localhost
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  mm-images:
