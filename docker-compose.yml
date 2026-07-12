@@ -38,6 +38,19 @@ services:
       STORE_ID: "11"
       STORE_AUTH_ID: "998877"
 
+      # ── Email-1: відправник + отримувач сповіщень (чеки, черга, excel) ────────
+      MAIL_HOST: "smtp.ukr.net"
+      MAIL_PORT: "465"
+      MAIL_SECURE: "true"
+      MAIL_USER: "cf-role1@ukr.net"
+      MAIL_PASS: "3aVB'-*KNq.IUY/@"
+      MAIL_FROM: "MicroMarket <cf-role1@ukr.net>"
+      MAIL_TO: "cf-role1@ukr.net"
+      # Email-2: отримувач повідомлень від покупців при проблемах (інтерфейс ще не реалізовано)
+      MAIL_SUPPORT_TO: "cf-role2@ukr.net"
+      MAIL_SUPPORT_USER: "cf-role2@ukr.net"
+      MAIL_SUPPORT_PASS: "6xFCPBR||la6V4hm"
+
     volumes:
       - C:/git/mm-images:/app/images   # bind mount — картинки зберігаються на диску хоста
 
@@ -52,6 +65,10 @@ services:
       args:
         VITE_STORE_LOGIN: "998877"
         VITE_STORE_PASSWORD: "mm_nextretail"
+        # Сканування цього штрихкоду відкриває екран конфігу (/setup), після чого
+        # все одно запитується пароль (ServiceUsers.password) через SetupAuthGate.
+        # 14 цифр — свідомо не збігається з довжиною реальних товарних EAN-13 (13 цифр).
+        VITE_CONFIG_BARCODE: "09090909090909"
     ports:
       - "80:80"           # кіоск-браузер відкриває http://localhost
     depends_on:
