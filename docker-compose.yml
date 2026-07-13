@@ -15,8 +15,8 @@ services:
       REFRESH_TOKEN_SECRET_KEY: "W}mUE6{(]R+n+gLw(KwW"
 
       # ── Термінал ─────────────────────────────────────────────────────────────
-      TERMINAL_PROVIDER: monobank
-      CLIENT_HOST: 192.168.0.185   # IP терміналу в WiFi мережі (рекомендується статичний IP)
+      TERMINAL_PROVIDER: privatbank
+      CLIENT_HOST: 10.100.5.19   # IP терміналу в WiFi мережі (рекомендується статичний IP)
       PRIVATBANK_PORT: "2000"
       MONOBANK_PORT: "3000"
       TERMINAL_PAYMENT_TIMEOUT_MS: "60000"
@@ -25,7 +25,7 @@ services:
 
       # ── Фіскалізація ─────────────────────────────────────────────────────────
       FISCAL_HOST: "https://kasa.vchasno.ua"
-      AUTH_MERCH_TOKEN: "q8FYOPDaDMDiSD8_S5kElkut54Wl2P7SL4SZ9RP_Ibs2Fai6GhRmDgBeg_ICgIAv"
+      AUTH_MERCH_TOKEN: "kQJSRfPrhTJfAsLw8UtTAK9w7CwzE5QOAKIulXGWgN9PtdEEo_5b0n0PeEi3nQ4v"
       AUTH_MERCH_TOKEN_VAT: "5dq5ej0FzBUdJc5_bxAviizD8TfNGlji_dwWxDWb6vr9pDKGeCHUB3Su_rOdonDH"
       FISCAL_RETRY_INTERVAL_MS: "10000"
 
