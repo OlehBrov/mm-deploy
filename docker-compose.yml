@@ -25,6 +25,7 @@ services:
 
       # ── Фіскалізація ─────────────────────────────────────────────────────────
       FISCAL_HOST: "https://kasa.vchasno.ua"
+      # AUTH_MERCH_TOKEN: "q8FYOPDaDMDiSD8_S5kElkut54Wl2P7SL4SZ9RP_Ibs2Fai6GhRmDgBeg_ICgIAv"
       AUTH_MERCH_TOKEN: "kQJSRfPrhTJfAsLw8UtTAK9w7CwzE5QOAKIulXGWgN9PtdEEo_5b0n0PeEi3nQ4v"
       AUTH_MERCH_TOKEN_VAT: "5dq5ej0FzBUdJc5_bxAviizD8TfNGlji_dwWxDWb6vr9pDKGeCHUB3Su_rOdonDH"
       FISCAL_RETRY_INTERVAL_MS: "10000"
