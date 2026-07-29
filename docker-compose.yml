@@ -59,6 +59,12 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"   # доступ до MS SQL на хості (потрібно на Linux; на Windows Docker Desktop вбудовано)
 
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
     restart: unless-stopped
 
   frontend:
@@ -75,5 +81,12 @@ services:
       - "80:80"           # кіоск-браузер відкриває http://localhost
     depends_on:
       - backend
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
     restart: unless-stopped
 
