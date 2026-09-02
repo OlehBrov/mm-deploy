@@ -1,4 +1,4 @@
-# Kiosk shell для моноблоку.
+﻿# Kiosk shell для моноблоку.
 # Цей скрипт стає ЗАМІНОЮ Windows shell (explorer.exe) на кіоск-обліковці —
 # встановлюється через setup-kiosk-shell.ps1 (ключ Winlogon\Shell).
 #
