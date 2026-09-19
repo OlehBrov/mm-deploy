@@ -23,7 +23,6 @@ services:
       INGENICO_PORT: "2000"
       INGENICO_MERCH_IDX: "1"
       INGENICO_HEARTBEAT_MS: "8000"   # 0 = вимкнути heartbeat (ExchangeStatuses)
-      INGENICO_ECR_STATUS: "2"        # 1 не підтр., 2 норма, 3 клієнт у процесі, 4 обслуговування, 5 не підключена
       TERMINAL_PAYMENT_TIMEOUT_MS: "60000"
       TERMINAL_CONNECTION_TIMEOUT_MS: "15000"
       TERMINAL_RECONNECT_INTERVAL_MS: "30000"
