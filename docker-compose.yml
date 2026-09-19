@@ -2,7 +2,7 @@ services:
 
   backend:
     build:
-      context: ../mm-back-ts
+      context: ../mm-back-nest
     ports:
       - "6006:6006"       # HTTP + WebSocket — доступно з LAN для адмін-панелі / Postman
     environment:
