@@ -25,7 +25,7 @@ services:
       INGENICO_HEARTBEAT_MS: "8000"   # 0 = вимкнути heartbeat (ExchangeStatuses)
       TERMINAL_PAYMENT_TIMEOUT_MS: "60000"
       TERMINAL_CONNECTION_TIMEOUT_MS: "15000"
-      TERMINAL_RECONNECT_INTERVAL_MS: "30000"
+      TERMINAL_RECONNECT_INTERVAL_MS: "15000"
 
       # ── Фіскалізація ─────────────────────────────────────────────────────────
       FISCAL_HOST: "https://kasa.vchasno.ua"
